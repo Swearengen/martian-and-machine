@@ -1,26 +1,27 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { FC } from 'react';
+import { Routes, Route, Navigate } from 'react-router-dom';
+import { Login } from './components/pages/Login';
+import { PostDetails } from './components/pages/PostDetails';
+import { PostList } from './components/pages/PostList';
+import { WithMessage } from './hoc/WithMessage';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+interface IAppProps {
+  message: string;
 }
 
-export default App;
+const App: FC<IAppProps> = ({ message }) => {
+  console.log(`${message} App`);
+
+  return (
+    <div>
+      <Routes>
+        <Route path="/" element={<Login message={message} />} />
+        <Route path="app" element={<PostList message={message} />} />
+        <Route path="post/:id" element={<PostDetails message={message} />} />
+        <Route path="*" element={<Navigate to="app" />} />
+      </Routes>
+    </div>
+  );
+};
+
+export default WithMessage(App);
