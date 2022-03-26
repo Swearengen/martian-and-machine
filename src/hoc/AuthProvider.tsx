@@ -1,8 +1,8 @@
 import { createContext, useState } from 'react';
-import { ILoginCredentials, IUser } from '../interfaces/auth';
+import { ILoginCredentials, IUser } from 'interfaces/auth';
 import Cookies from 'js-cookie';
-import { ACCESS_TOKEN } from '../constants/accessToken';
-import { UserCookieKeys } from '../enums/userCookieKeys';
+import { ACCESS_TOKEN } from 'constants/accessToken';
+import { UserCookieKeys } from 'enums/userCookieKeys';
 
 interface AuthContextType {
   user: IUser | null;
