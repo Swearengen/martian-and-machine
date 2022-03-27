@@ -1,3 +1,4 @@
+import { useToast } from 'hooks/useToast';
 import { FC } from 'react';
 import { useForm } from 'react-hook-form';
 
@@ -7,6 +8,8 @@ interface ILoginProps {
 
 export const Login: FC<ILoginProps> = ({ message }) => {
   console.log(`${message} Login`);
+
+  const { addToast } = useToast();
 
   const {
     register,
@@ -21,6 +24,7 @@ export const Login: FC<ILoginProps> = ({ message }) => {
 
   const onSubmit = (data: { email: string; password: string }) => {
     console.log(data, '-----');
+    addToast({ message: 'Successful login', type: 'success' });
   };
 
   return (

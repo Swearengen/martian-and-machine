@@ -4,14 +4,17 @@ import { BrowserRouter } from 'react-router-dom';
 import App from 'App';
 import { AuthProvider } from 'hoc/AuthProvider';
 import 'index.css';
+import { ToastProvider } from 'hoc/WithToast';
 
 ReactDOM.render(
   <React.StrictMode>
-    <AuthProvider>
-      <BrowserRouter>
-        <App />
-      </BrowserRouter>
-    </AuthProvider>
+    <ToastProvider>
+      <AuthProvider>
+        <BrowserRouter>
+          <App />
+        </BrowserRouter>
+      </AuthProvider>
+    </ToastProvider>
   </React.StrictMode>,
   document.getElementById('root'),
 );
