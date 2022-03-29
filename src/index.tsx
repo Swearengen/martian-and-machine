@@ -5,13 +5,16 @@ import App from 'App';
 import { AuthProvider } from 'hoc/AuthProvider';
 import 'index.css';
 import { ToastProvider } from 'hoc/WithToast';
+import { StateProvider } from 'store/store';
 
 ReactDOM.render(
   <React.StrictMode>
     <ToastProvider>
       <AuthProvider>
         <BrowserRouter>
-          <App />
+          <StateProvider>
+            <App />
+          </StateProvider>
         </BrowserRouter>
       </AuthProvider>
     </ToastProvider>
