@@ -1,6 +1,6 @@
 import { useContext } from 'react';
 import { StateContext } from 'store/store';
 
-export function useAuth() {
+export function useStore() {
   return useContext(StateContext);
 }
