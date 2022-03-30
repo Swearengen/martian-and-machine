@@ -1,6 +1,8 @@
+import { useAuth } from 'hooks/useAuth';
 import { useToast } from 'hooks/useToast';
 import { FC } from 'react';
 import { useForm } from 'react-hook-form';
+import { useNavigate } from 'react-router-dom';
 
 interface ILoginProps {
   message: string;
@@ -10,6 +12,8 @@ export const Login: FC<ILoginProps> = ({ message }) => {
   console.log(`${message} Login`);
 
   const { addToast } = useToast();
+  const { signIn } = useAuth();
+  const navigate = useNavigate();
 
   const {
     register,
@@ -23,8 +27,10 @@ export const Login: FC<ILoginProps> = ({ message }) => {
   });
 
   const onSubmit = (data: { email: string; password: string }) => {
-    console.log(data, '-----');
-    addToast({ message: 'Successful login', type: 'success' });
+    signIn(data.email, () => {
+      navigate('/app');
+      addToast({ message: 'Successful login', type: 'success' });
+    });
   };
 
   return (

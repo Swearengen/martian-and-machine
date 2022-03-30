@@ -1,12 +1,12 @@
 import { createContext, useState } from 'react';
-import { ILoginCredentials, IUser } from 'interfaces/auth';
+import { IUser } from 'interfaces/auth';
 import Cookies from 'js-cookie';
 import { ACCESS_TOKEN } from 'constants/accessToken';
 import { UserCookieKeys } from 'enums/userCookieKeys';
 
 interface AuthContextType {
   user: IUser | null;
-  signIn: (credentials: ILoginCredentials, callback: VoidFunction) => void;
+  signIn: (email: string, callback: VoidFunction) => void;
   signOut: (callback: VoidFunction) => void;
 }
 
@@ -28,9 +28,9 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
     Cookies.set(UserCookieKeys.Email, user.email as string);
   };
 
-  const signIn = (credentials: ILoginCredentials, callback: VoidFunction) => {
+  const signIn = (email: string, callback: VoidFunction) => {
     // usually this is where I would do api call to authenticate user and retrive token
-    storeUser({ email: credentials.email, token: ACCESS_TOKEN });
+    storeUser({ email: email, token: ACCESS_TOKEN });
     callback();
   };
 

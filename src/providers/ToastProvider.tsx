@@ -44,7 +44,7 @@ export const ToastProvider = ({ children }: { children: React.ReactNode }) => {
   return (
     <ToastContext.Provider value={{ addToast }}>
       <div className="relative">
-        <div className="absolute flex flex-col items-center z-20 w-full top-4">
+        <div className="absolute flex flex-col items-center z-20 top-4 left-1/2 -translate-x-2/4">
           {toastList.map((toast) => (
             <Alert key={toast.id} toast={toast} onDeleteToast={onDeleteToast} />
           ))}

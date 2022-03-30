@@ -1,3 +1,4 @@
+import { AppLayout } from 'components/layouts/AppLayout';
 import { FC } from 'react';
 import { Routes, Route, Navigate } from 'react-router-dom';
 import { Login } from './components/pages/Login';
@@ -16,8 +17,22 @@ const App: FC<IAppProps> = ({ message }) => {
     <div>
       <Routes>
         <Route path="/" element={<Login message={message} />} />
-        <Route path="app" element={<PostList message={message} />} />
-        <Route path="post/:id" element={<PostDetails message={message} />} />
+        <Route
+          path="app"
+          element={
+            <AppLayout message={message}>
+              <PostList message={message} />
+            </AppLayout>
+          }
+        />
+        <Route
+          path="post/:id"
+          element={
+            <AppLayout message={message}>
+              <PostDetails message={message} />
+            </AppLayout>
+          }
+        />
         <Route path="*" element={<Navigate to="app" />} />
       </Routes>
     </div>
