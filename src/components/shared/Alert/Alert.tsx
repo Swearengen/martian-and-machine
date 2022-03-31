@@ -19,7 +19,7 @@ export const Alert: FC<IAlertProps> = ({ toast, onDeleteToast }) => (
   <div
     className={`${classnames({
       'bg-emerald-300': toast.type === 'success',
-      'bg-red': toast.type === 'error',
+      'bg-martianRed': toast.type === 'error',
       'bg-orange-300': toast.type === 'warning',
     })} p-2 w-72 sm:w-80 mb-4 flex items-center justify-between`}
   >

@@ -1,6 +1,6 @@
 import { IPost } from 'interfaces/post';
 import { IUser } from 'interfaces/user';
-import { createContext, ReactNode, useReducer } from 'react';
+import { createContext, ReactNode, ReducerAction, useReducer } from 'react';
 import { Post } from './models/post';
 import { User } from './models/user';
 

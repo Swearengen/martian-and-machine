@@ -54,7 +54,7 @@ export const Login: FC<ILoginProps> = ({ message }) => {
           })}
           className="form-input px-3 py-2 rounded w-full border-gray"
         />
-        <p className="text-red text-sm my-2 h-5">{errors.email?.message}</p>
+        <p className="text-martianRed text-sm my-2 h-5">{errors.email?.message}</p>
         <label htmlFor="password" className="text-darkgray block mb-2">
           Password
         </label>
@@ -63,9 +63,9 @@ export const Login: FC<ILoginProps> = ({ message }) => {
           {...register('password', { required: 'Field is required' })}
           className="form-input px-3 py-2 rounded w-full border-gray"
         />
-        <p className="text-red text-sm my-2 h-5">{errors.password?.message}</p>
+        <p className="text-martianRed text-sm my-2 h-5">{errors.password?.message}</p>
 
-        <button type="submit" className="bg-red hover:opacity-75 rounded text-white p-2">
+        <button type="submit" className="bg-martianRed hover:opacity-75 rounded text-white p-2">
           Submit
         </button>
       </form>

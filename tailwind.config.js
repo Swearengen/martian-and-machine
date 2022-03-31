@@ -3,11 +3,11 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        red: '#EF4059',
-        dark: '#3D3D3D',
-        darkgray: '#8E8E8E',
-        gray: '#C7C7C7',
-        lightgray: '#F5F5F5',
+        martianRed: '#EF4059',
+        martianDark: '#3D3D3D',
+        martianDarkgray: '#8E8E8E',
+        martianGray: '#C7C7C7',
+        martianLightgray: '#F5F5F5',
       },
     },
   },

@@ -1,6 +1,8 @@
+import { Post } from 'components/shared/Post/Post';
 import { useStore } from 'hooks/useStore';
 import { FC, useEffect } from 'react';
-import { ActionType, IState } from 'store/store';
+import { Post as PostInstance } from 'store/models/post';
+import { ActionType } from 'store/store';
 
 interface IPostListProps {
   message: string;
@@ -43,5 +45,14 @@ export const PostList: FC<IPostListProps> = ({ message }) => {
 
   console.log(store);
 
-  return <div>list of posts</div>;
+  const _posts = store.posts;
+
+  return (
+    <main className="container mt-10 px-4">
+      <h1 className="text-left mb-4 font-bold text-lg">Posts</h1>
+      {_posts.map((post: PostInstance) => (
+        <Post post={post} />
+      ))}
+    </main>
+  );
 };
