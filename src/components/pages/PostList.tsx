@@ -1,7 +1,7 @@
-import { Post } from 'components/shared/Post/Post';
+import { PostItem } from 'components/shared/PostItem/PostItem';
 import { useStore } from 'hooks/useStore';
 import { FC, useEffect } from 'react';
-import { Post as PostInstance } from 'store/models/post';
+import { Post } from 'store/models/post';
 import { ActionType } from 'store/store';
 
 interface IPostListProps {
@@ -50,8 +50,8 @@ export const PostList: FC<IPostListProps> = ({ message }) => {
   return (
     <main className="container mt-10 px-4">
       <h1 className="text-left mb-4 font-bold text-lg">Posts</h1>
-      {_posts.map((post: PostInstance) => (
-        <Post post={post} />
+      {_posts.map((post: Post) => (
+        <PostItem key={post.id} post={post} />
       ))}
     </main>
   );
