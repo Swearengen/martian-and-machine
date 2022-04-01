@@ -25,7 +25,7 @@ export const AppLayout: FC<IAppLayoutProps> = ({ children, message }) => {
         <div className="text-right mb-6">
           <button
             type="button"
-            className="px-4 py-2 text-blue-600 hover:underline"
+            className="px-4 py-2 text-martianRed hover:underline"
             onClick={() => onSignOut()}
           >
             Log out

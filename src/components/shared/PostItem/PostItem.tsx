@@ -6,6 +6,7 @@ import { CommentItem } from '../CommentItem/CommentItem';
 
 interface IPostProps {
   post: PostInstance;
+  disableCollapse?: boolean;
 }
 
 const comments = [
@@ -46,14 +47,14 @@ const comments = [
   },
 ] as Array<IComment>;
 
-export const PostItem: FC<IPostProps> = ({ post }) => {
-  const [isExpanded, setIsExpanded] = useState(false);
+export const PostItem: FC<IPostProps> = ({ post, disableCollapse }) => {
+  const [isExpanded, setIsExpanded] = useState(disableCollapse);
 
   // fetch commets sa swr-om /post/id/comments
 
   return (
     <div className="mb-8">
-      <div className="relative p-6 border-solid border-2 border-gray-100 rounded-lg before:content-[''] before:w-1 before:h-full before:absolute before:top-0 before:left-0 before:bg-gray-300 hover:before:bg-blue-400">
+      <div className="relative p-6 border-solid border-2 border-gray-100 rounded-lg before:content-[''] before:w-1 before:h-full before:absolute before:top-0 before:left-0 before:bg-gray-300 hover:before:bg-martianRed">
         <Link to={`/post/${post.id}`}>
           <div className="mb-4">
             <p className="mb-4 text-gray-500">{post.user?.name}</p>
@@ -68,14 +69,16 @@ export const PostItem: FC<IPostProps> = ({ post }) => {
             ))}
           </div>
         )}
-        <button
-          type="button"
-          disabled={comments.length === 0}
-          className="text-blue-600 hover:underline disabled:text-gray-600 disabled:cursor-not-allowed"
-          onClick={() => setIsExpanded((prevValue) => !prevValue)}
-        >
-          {isExpanded ? 'hide comments' : `show comments (${comments.length})`}
-        </button>
+        {!disableCollapse && (
+          <button
+            type="button"
+            disabled={comments.length === 0}
+            className="text-martianRed hover:underline disabled:text-gray-600 disabled:cursor-not-allowed"
+            onClick={() => setIsExpanded((prevValue) => !prevValue)}
+          >
+            {isExpanded ? 'hide comments' : `show comments (${comments.length})`}
+          </button>
+        )}
       </div>
     </div>
   );

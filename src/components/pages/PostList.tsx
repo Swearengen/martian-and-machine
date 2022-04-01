@@ -43,13 +43,11 @@ export const PostList: FC<IPostListProps> = ({ message }) => {
     dispatch({ type: ActionType.AddPosts, payload: posts });
   }, [dispatch]);
 
-  console.log(store);
-
   const _posts = store.posts;
 
   return (
     <main className="container mt-10 px-4">
-      <h1 className="text-left mb-4 font-bold text-lg">Posts</h1>
+      <h1 className="mb-4 font-bold text-xl text-center">Posts</h1>
       {_posts.map((post: Post) => (
         <PostItem key={post.id} post={post} />
       ))}
