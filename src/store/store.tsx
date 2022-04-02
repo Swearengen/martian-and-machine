@@ -29,7 +29,7 @@ function reducer(state: IState, action: { type: ActionType; payload: any }) {
           title: post.title,
           body: post.body,
         });
-        const user = state.users.find((user) => user.id === postInstance.id);
+        const user = state.users.find((user) => user.id === postInstance.userId);
         user && postInstance.setUser(user);
         return postInstance;
       });
