@@ -1,6 +1,6 @@
 import { IPost } from 'interfaces/post';
 import { IUser } from 'interfaces/user';
-import { createContext, ReactNode, ReducerAction, useReducer } from 'react';
+import { createContext, ReactNode, useReducer } from 'react';
 import { Post } from './models/post';
 import { User } from './models/user';
 
@@ -22,7 +22,7 @@ const initialState: IState = {
 function reducer(state: IState, action: { type: ActionType; payload: any }) {
   switch (action.type) {
     case ActionType.AddPosts:
-      const posts = action.payload.map((post: IPost) => {
+      const posts = action.payload?.map((post: IPost) => {
         const postInstance = new Post({
           id: post.id,
           userId: post.userId,
@@ -40,7 +40,9 @@ function reducer(state: IState, action: { type: ActionType; payload: any }) {
       };
 
     case ActionType.AddUsers:
-      const users = action.payload.map((user: IUser) => new User({ id: user.id, name: user.name }));
+      const users = action.payload?.map(
+        (user: IUser) => new User({ id: user.id, name: user.name }),
+      );
       return {
         ...state,
         users,

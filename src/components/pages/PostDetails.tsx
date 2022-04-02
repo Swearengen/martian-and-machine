@@ -1,9 +1,9 @@
 import { PostItem } from 'components/shared/PostItem/PostItem';
-import { useStore } from 'hooks/useStore';
 import { FC } from 'react';
 import { useParams } from 'react-router-dom';
-import { Post } from 'store/models/post';
 import { Link } from 'react-router-dom';
+import { useFetcher } from 'hooks/useFetcher';
+import useSWR from 'swr';
 
 interface IPostDetailsProps {
   message: string;
@@ -11,11 +11,10 @@ interface IPostDetailsProps {
 
 export const PostDetails: FC<IPostDetailsProps> = ({ message }) => {
   console.log(`${message} PostDetails`);
-
+  const fetcher = useFetcher();
   const params = useParams();
-  const [state] = useStore() as Array<any>;
 
-  const currentPost = state.posts.find((post: Post) => post.id === params.id);
+  const { data: post, error } = useSWR(`/posts/${params.id}`, fetcher);
 
   return (
     <main className="container mt-10 px-4">
@@ -25,7 +24,11 @@ export const PostDetails: FC<IPostDetailsProps> = ({ message }) => {
           <span className="text-martianRed hover:underline">Back</span>
         </Link>
       </div>
-      {currentPost && <PostItem post={currentPost} disableCollapse={true} />}
+      {!post && !error ? (
+        <div>Loading</div>
+      ) : (
+        <PostItem post={post} disableCollapse={true} message={message} />
+      )}
     </main>
   );
 };
