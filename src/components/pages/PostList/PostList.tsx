@@ -1,9 +1,8 @@
 import { PostItem } from 'components/shared/PostItem/PostItem';
 import { useFetcher } from 'hooks/useFetcher';
-import { useStore } from 'hooks/useStore';
-import { FC, useEffect, useMemo, useState } from 'react';
+import { FC, useEffect, useMemo, useReducer, useState } from 'react';
 import { Post } from 'store/models/post';
-import { ActionType } from 'store/store';
+import { ActionType, initialState, reducer } from 'store/store';
 import useSWR from 'swr';
 
 interface IPostListProps {
@@ -13,7 +12,7 @@ interface IPostListProps {
 export const PostList: FC<IPostListProps> = ({ message }) => {
   console.log(`${message} PostList`);
   const [searchValue, setSearchValue] = useState('');
-  const [store, dispatch] = useStore() as Array<any>;
+  const [store, dispatch] = useReducer(reducer, initialState) as Array<any>;
   const fetcher = useFetcher();
 
   const { data: usersResponse } = useSWR('/users', fetcher);

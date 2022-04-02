@@ -3,7 +3,7 @@ import { FC } from 'react';
 import { Routes, Route, Navigate } from 'react-router-dom';
 import { Login } from './components/pages/Login';
 import { PostDetails } from './components/pages/PostDetails';
-import { PostList } from './components/pages/PostList';
+import { PostList } from './components/pages/PostList/PostList';
 import { WithMessage } from './hoc/WithMessage';
 
 interface IAppProps {

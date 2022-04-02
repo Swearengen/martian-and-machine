@@ -1,6 +1,5 @@
 import { IPost } from 'interfaces/post';
 import { IUser } from 'interfaces/user';
-import { createContext, ReactNode, useReducer } from 'react';
 import { Post } from './models/post';
 import { User } from './models/user';
 
@@ -14,12 +13,12 @@ export enum ActionType {
   AddPosts = 'addPosts',
 }
 
-const initialState: IState = {
+export const initialState: IState = {
   posts: [],
   users: [],
 };
 
-function reducer(state: IState, action: { type: ActionType; payload: any }) {
+export const reducer = (state: IState, action: { type: ActionType; payload: any }) => {
   switch (action.type) {
     case ActionType.AddPosts:
       const posts = action.payload?.map((post: IPost) => {
@@ -51,12 +50,4 @@ function reducer(state: IState, action: { type: ActionType; payload: any }) {
     default:
       return state;
   }
-}
-
-export const StateContext = createContext({});
-
-export const StateProvider = ({ children }: { children: ReactNode }) => {
-  const state = useReducer(reducer, initialState);
-
-  return <StateContext.Provider value={state}>{children}</StateContext.Provider>;
 };

@@ -5,7 +5,6 @@ import App from 'App';
 import { AuthProvider } from 'providers/AuthProvider';
 import 'index.css';
 import { ToastProvider } from 'providers/ToastProvider';
-import { StateProvider } from 'store/store';
 import { HttpClientProvider } from 'providers/HttpClientProvider';
 
 ReactDOM.render(
@@ -14,9 +13,7 @@ ReactDOM.render(
       <AuthProvider>
         <HttpClientProvider>
           <BrowserRouter>
-            <StateProvider>
-              <App />
-            </StateProvider>
+            <App />
           </BrowserRouter>
         </HttpClientProvider>
       </AuthProvider>
