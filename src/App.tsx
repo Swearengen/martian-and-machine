@@ -2,7 +2,7 @@ import { AppLayout } from 'components/layouts/AppLayout';
 import { FC } from 'react';
 import { Routes, Route, Navigate } from 'react-router-dom';
 import { Login } from './components/pages/Login';
-import { PostDetails } from './components/pages/PostDetails';
+import { PostDetails } from './components/pages/PostDetails/PostDetails';
 import { PostList } from './components/pages/PostList/PostList';
 import { WithMessage } from './hoc/WithMessage';
 
